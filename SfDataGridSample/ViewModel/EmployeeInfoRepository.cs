@@ -7,38 +7,12 @@ namespace SfDataGridSample
 {
     public class EmployeeViewModel : IDisposable
     {
-        public ICommand SortCommand { get; set; }
-        public ICommand ClearSortCommand { get; set; }
-        public string currentColumnName { get; set; }
         public EmployeeViewModel()
         {
             PopulateData();
             employees = this.GetEmployeeDetails(200);
-            titleCollection = GetTitles();
-            SortCommand = new Command(SortColumn);
-            ClearSortCommand = new Command(ClearSort);
         }
 
-        private void ClearSort(object sender)
-        {
-            var dataGrid = sender as SfDataGrid;
-            if (dataGrid.SortColumnDescriptions.Count > 0)
-                dataGrid.SortColumnDescriptions.Clear();
-            else
-                Application.Current.MainPage.DisplayAlert("Warning", "Column not sorted", "Ok");
-        }
-
-        private void SortColumn(object sender)
-        {
-            var dataGrid = sender as SfDataGrid;
-            dataGrid.SortColumnDescriptions.Clear();
-            dataGrid.SortColumnDescriptions.Add(new SortColumnDescription()
-            {
-                ColumnName = currentColumnName,
-                SortDirection = ListSortDirection.Ascending,
-            });
-
-        }
 
         private ObservableCollection<Employee> employees;
         /// <summary>
@@ -52,19 +26,7 @@ namespace SfDataGridSample
             }
 
         }
-
-        private ObservableCollection<string> titleCollection;
-        /// <summary>
-        /// Get or set the EmployeeDetails
-        /// </summary>
-        public ObservableCollection<string> TitleCollection
-        {
-            get
-            {
-                return titleCollection;
-            }
-
-        }
+       
 
         Random r = new Random();
         Dictionary<string, string> loginID = new Dictionary<string, string>();
@@ -105,60 +67,6 @@ namespace SfDataGridSample
             return employees;
         }
 
-        private static ObservableCollection<string> GetTitles()
-        {
-            ObservableCollection<string> titles = new ObservableCollection<string>();
-            titles.Add("Marketing Assistant");
-            titles.Add("Engineering Manager");
-            titles.Add("Senior Tool Designer");
-            titles.Add("Tool Designer");
-            titles.Add("Marketing Manager");
-            titles.Add("Production Supervisor - WC60");
-            titles.Add("Production Technician - WC10");
-            titles.Add("Design Engineer");
-            titles.Add("Production Technician - WC10");
-            titles.Add("Design Engineer");
-            titles.Add("Vice President of Engineering");
-            titles.Add("Production Technician - WC10");
-            titles.Add("Production Supervisor - WC50");
-            titles.Add("Production Technician - WC10");
-            titles.Add("Production Supervisor - WC60");
-            titles.Add("Production Technician - WC10");
-            titles.Add("Production Supervisor - WC60");
-            titles.Add("Production Technician - WC10");
-            titles.Add("Production Technician - WC30");
-            titles.Add("Production Control Manager");
-            titles.Add("Production Technician - WC45");
-            titles.Add("Production Technician - WC45");
-            titles.Add("Production Technician - WC30");
-            titles.Add("Production Supervisor - WC10");
-            titles.Add("Production Technician - WC20");
-            titles.Add("Production Technician - WC40");
-            titles.Add("Network Administrator");
-            titles.Add("Production Technician - WC50");
-            titles.Add("Human Resources Manager");
-            titles.Add("Production Technician - WC40");
-            titles.Add("Production Technician - WC30");
-            titles.Add("Production Technician - WC30");
-            titles.Add("Stocker");
-            titles.Add("Shipping and Receiving Clerk");
-            titles.Add("Production Technician - WC50");
-            titles.Add("Production Technician - WC60");
-            titles.Add("Production Supervisor - WC50");
-            titles.Add("Production Technician - WC20");
-            titles.Add("Production Technician - WC45");
-            titles.Add("Quality Assurance Supervisor");
-            titles.Add("Information Services Manager");
-            titles.Add("Production Technician - WC50");
-            titles.Add("Master Scheduler");
-            titles.Add("Production Technician - WC40");
-            titles.Add("Marketing Specialist");
-            titles.Add("Recruiter");
-            titles.Add("Production Technician - WC50");
-            titles.Add("Maintenance Supervisor");
-            titles.Add("Production Technician - WC30");
-            return titles;
-        }
         /// <summary>
         /// Populate the data for Gender
         /// </summary>
