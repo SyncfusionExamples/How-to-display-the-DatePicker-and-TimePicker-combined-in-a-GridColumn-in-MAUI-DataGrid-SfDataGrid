@@ -6,11 +6,10 @@
              x:Class="SfDataGridSample.MainPage">
 
     <ContentPage.BindingContext>
-        <local:EmployeeViewModel x:Name="viewModel" />
+        <local:EmployeeViewModel />
     </ContentPage.BindingContext>
 
-    <syncfusion:SfDataGrid x:Name="dataGrid"
-                           ColumnWidthMode="FitByCell"
+    <syncfusion:SfDataGrid ColumnWidthMode="FitByCell"
                            HeaderGridLinesVisibility="None"
                            GridLinesVisibility="None"
                            ItemsSource="{Binding Employees}">
