@@ -7,32 +7,38 @@ Currently, .NET MAUI does not offer a view that combines both the DatePicker and
 
  
  ```XML
-<syncfusion:sfdatagrid x:name="dataGrid" 
-                       columnwidthmode="FitByCell" 
-                       headergridlinesvisibility="None" 
-                       gridlinesvisibility="None" 
-                       itemssource="{Binding Employees}">
+<syncfusion:SfDataGrid ColumnWidthMode="FitByCell"
+                       HeaderGridLinesVisibility="None"
+                       GridLinesVisibility="None"
+                       ItemsSource="{Binding Employees}">
 
-    <syncfusion:sfdatagrid.columns>
-        <syncfusion:datagridtemplatecolumn mappingname="EmployeeID" width="400" headertext="Date and Time">
-            <syncfusion:datagridtemplatecolumn.celltemplate>
-                <datatemplate>
-                    <stacklayout orientation="Horizontal">
-                        <datepicker date="{Binding HireDate}" widthrequest="110" margin="2" textcolor="Black">
-                        <timepicker time="{Binding HireDate}" widthrequest="250" margin="2" verticaloptions="CenterAndExpand" textcolor="Black">
-                    </timepicker></datepicker></stacklayout>
-                </datatemplate>
-            </syncfusion:datagridtemplatecolumn.celltemplate>
-        </syncfusion:datagridtemplatecolumn>
-        <syncfusion:datagridtextcolumn mappingname="Name"       
-                                    headertext="Name">
-        </syncfusion:datagridtextcolumn>
-        <syncfusion:datagridtextcolumn mappingname="IDNumber" 
-                                       headertext="ID Number">
-        </syncfusion:datagridtextcolumn>
-    </syncfusion:sfdatagrid.columns>
+    <syncfusion:SfDataGrid.Columns>
+        <syncfusion:DataGridTemplateColumn MappingName="EmployeeID"
+                                           Width="400"
+                                           HeaderText="Date and Time">
+            <syncfusion:DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal">
+                        <DatePicker Date="{Binding HireDate}"
+                                    WidthRequest="110"
+                                    Margin="2"
+                                    TextColor="Black" />
+                        <TimePicker Time="{Binding HireDate}"
+                                    WidthRequest="250"
+                                    Margin="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    TextColor="Black" />
+                    </StackLayout>
+                </DataTemplate>
+            </syncfusion:DataGridTemplateColumn.CellTemplate>
+        </syncfusion:DataGridTemplateColumn>
+        <syncfusion:DataGridTextColumn MappingName="Name"
+                                       HeaderText="Name"></syncfusion:DataGridTextColumn>
+        <syncfusion:DataGridTextColumn MappingName="IDNumber"
+                                       HeaderText="ID Number"></syncfusion:DataGridTextColumn>
 
-</syncfusion:sfdatagrid> 
+    </syncfusion:SfDataGrid.Columns>
+</syncfusion:SfDataGrid>
  ```
  
 
