@@ -8,11 +8,5 @@ namespace SfDataGridSample
         {
             InitializeComponent();
         }
-
-        private void datagrid_CellLongPress(object sender, DataGridCellLongPressEventArgs e)
-        {
-            viewModel.Employees.Remove((Employee)e.RowData);
-        }
-
     }
 }

@@ -9,9 +9,38 @@
         <local:EmployeeViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
 
-    <syncfusion:SfDataGrid ColumnWidthMode="Auto"
-                           ItemsSource="{Binding Employees}"
-                           CellLongPress="datagrid_CellLongPress">
+    <syncfusion:SfDataGrid x:Name="dataGrid"
+                           ColumnWidthMode="FitByCell"
+                           HeaderGridLinesVisibility="None"
+                           GridLinesVisibility="None"
+                           ItemsSource="{Binding Employees}">
+
+        <syncfusion:SfDataGrid.Columns>
+            <syncfusion:DataGridTemplateColumn MappingName="EmployeeID"
+                                               Width="400"
+                                               HeaderText="Date and Time">
+                <syncfusion:DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <DatePicker Date="{Binding HireDate}"
+                                        WidthRequest="110"
+                                        Margin="2"
+                                        TextColor="Black" />
+                            <TimePicker Time="{Binding HireDate}"
+                                        WidthRequest="250"
+                                        Margin="2"
+                                        VerticalOptions="CenterAndExpand"
+                                        TextColor="Black" />
+                        </StackLayout>
+                    </DataTemplate>
+                </syncfusion:DataGridTemplateColumn.CellTemplate>
+            </syncfusion:DataGridTemplateColumn>
+            <syncfusion:DataGridTextColumn MappingName="Name"
+                                           HeaderText="Name"></syncfusion:DataGridTextColumn>
+            <syncfusion:DataGridTextColumn MappingName="IDNumber"
+                                           HeaderText="ID Number"></syncfusion:DataGridTextColumn>
+
+        </syncfusion:SfDataGrid.Columns>
     </syncfusion:SfDataGrid>
 
 </ContentPage>
